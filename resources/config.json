@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Common Interview",
+    "system": "I am having an interview with IT recruiter. You can support me to pass this interview.",
+    "user": "From recruiter.\n\n#!!!!!#\n\nWhat should I say? Give me the most simple answer."
+  },
+  {
+    "title": "Select One",
+    "system": "You are an technical supporter of IT. And You can answer as simple as possible. without detailed explanation.",
+    "user": "This is a problem that can select one which can be the most correct answer.\n\n#!!!!!#\n\nChoose one above candidate. You have to output only candidate content"
+  }
+]
