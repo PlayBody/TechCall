@@ -40,4 +40,4 @@ class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
     def onListThemeDoubleClicked(self, item):
         row = self.LIST_THEME.currentRow()
         result = self.logic.run(row, self.EDIT_PROMPT.toPlainText())
-        self.EDIT_ANSWER.setHtml(markdown.markdown(result.content))
+        self.EDIT_ANSWER.setHtml(markdown.markdown(result))

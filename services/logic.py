@@ -13,11 +13,15 @@ class MainLogic:
     def run(self, index, prompt):
         system_content = self.configs[index]["system"]
         user_content = self.configs[index]["user"].replace("#!!!!!#", prompt)
-        completion = self.client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_content},
-                {"role": "user", "content": user_content}
-            ]
-        )
-        return completion.choices[0].message
+        try:
+            completion = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_content},
+                    {"role": "user", "content": user_content}
+                ]
+            )
+            print(completion.choices)
+            return completion.choices[0].message.content
+        except:
+            return "error"
