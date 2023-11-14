@@ -22,6 +22,14 @@ class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
                 self.LIST_THEME.addItem(value["title"])
         except:
             pass
+        
+        keyfile = os.path.join(app_dir, 'resources\\apikey')
+        try:
+            json_file = open(keyfile, 'r')
+            key = json_file.readline()
+            self.logic.setApiKey(key)
+        except:
+            pass
 
         self.EDIT_API_KEY.textChanged.connect(self.onEditApiKeyTextChanged)
         self.LIST_THEME.itemDoubleClicked.connect(self.onListThemeDoubleClicked)

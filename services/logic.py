@@ -2,7 +2,7 @@ from openai import OpenAI
 
 class MainLogic:
     def __init__(self) -> None:
-        self.client = OpenAI(api_key = "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")
+        self.client = OpenAI(api_key = "")
         pass
     def setConfig(self, configs):
         self.configs = configs
