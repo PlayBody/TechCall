@@ -20,7 +20,7 @@ class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
             configs = json.load(json_file)
             self.logic.setConfig(configs)
             for value in configs:
-                self.LIST_THEME.addItem(value["prompt"])
+                self.LIST_THEME.addItem(value["prompt"].replace("\n", ""))
         except:
             pass
         
