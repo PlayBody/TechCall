@@ -6,6 +6,7 @@ import markdown
 from moc.mainwindow import Ui_MainWindow
 from services.logic import MainLogic
 from store import app_dir
+import pyperclip
 
 class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
     def __init__(self, *args, obj=None, **kwargs):
@@ -19,25 +20,18 @@ class MainWindow(QtWidgets.QWidget, Ui_MainWindow):
             configs = json.load(json_file)
             self.logic.setConfig(configs)
             for value in configs:
-                self.LIST_THEME.addItem(value["title"])
+                self.LIST_THEME.addItem(value["prompt"])
         except:
             pass
         
-        keyfile = os.path.join(app_dir, 'resources\\apikey')
-        try:
-            json_file = open(keyfile, 'r')
-            key = json_file.readline()
-            self.logic.setApiKey(key)
-        except:
-            pass
-
-        self.EDIT_API_KEY.textChanged.connect(self.onEditApiKeyTextChanged)
-        self.LIST_THEME.itemDoubleClicked.connect(self.onListThemeDoubleClicked)
+        self.LIST_THEME.itemClicked.connect(self.onListThemeClicked)
+        self.setWindowFlags(QtCore.Qt.WindowType.WindowStaysOnTopHint)
 
     def onEditApiKeyTextChanged(self, key):
         self.logic.setApiKey(key)
 
-    def onListThemeDoubleClicked(self, item):
+    def onListThemeClicked(self, item):
         row = self.LIST_THEME.currentRow()
-        result = self.logic.run(row, self.EDIT_PROMPT.toPlainText())
-        self.EDIT_ANSWER.setHtml(markdown.markdown(result))
+        result = self.logic.run(row)
+        pyperclip.copy(result)
+        self.LIST_THEME.setCurrentRow(-1)

@@ -12,64 +12,43 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1065, 680)
+        MainWindow.resize(345, 211)
         self.gridLayout = QtWidgets.QGridLayout(MainWindow)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label = QtWidgets.QLabel(parent=MainWindow)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.EDIT_API_KEY = QtWidgets.QLineEdit(parent=MainWindow)
-        self.EDIT_API_KEY.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
-        self.EDIT_API_KEY.setObjectName("EDIT_API_KEY")
-        self.horizontalLayout.addWidget(self.EDIT_API_KEY)
-        self.verticalLayout.addLayout(self.horizontalLayout)
         self.LIST_THEME = QtWidgets.QListWidget(parent=MainWindow)
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setPointSize(14)
         self.LIST_THEME.setFont(font)
+        self.LIST_THEME.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.LIST_THEME.setStyleSheet("QListWidget::item:hover {\n"
+"                background-color: lightblue;\n"
+"}\n"
+"\n"
+"QListWidget::item:selected {\n"
+"                background-color: green;\n"
+"}\n"
+"\n"
+"QListWidget::item:pressed {\n"
+"                background-color: lightcoral;\n"
+"}")
+        self.LIST_THEME.setFrameShape(QtWidgets.QFrame.Shape.Box)
+        self.LIST_THEME.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
         self.LIST_THEME.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.LIST_THEME.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.LIST_THEME.setAlternatingRowColors(True)
+        self.LIST_THEME.setVerticalScrollMode(QtWidgets.QAbstractItemView.ScrollMode.ScrollPerPixel)
+        self.LIST_THEME.setProperty("isWrapping", True)
+        self.LIST_THEME.setResizeMode(QtWidgets.QListView.ResizeMode.Adjust)
+        self.LIST_THEME.setViewMode(QtWidgets.QListView.ViewMode.ListMode)
+        self.LIST_THEME.setWordWrap(True)
+        self.LIST_THEME.setSelectionRectVisible(True)
         self.LIST_THEME.setObjectName("LIST_THEME")
-        self.verticalLayout.addWidget(self.LIST_THEME)
-        self.horizontalLayout_2.addLayout(self.verticalLayout)
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.EDIT_PROMPT = QtWidgets.QPlainTextEdit(parent=MainWindow)
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.EDIT_PROMPT.setFont(font)
-        self.EDIT_PROMPT.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        self.EDIT_PROMPT.setPlainText("")
-        self.EDIT_PROMPT.setObjectName("EDIT_PROMPT")
-        self.verticalLayout_2.addWidget(self.EDIT_PROMPT)
-        self.EDIT_ANSWER = QtWidgets.QTextBrowser(parent=MainWindow)
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.EDIT_ANSWER.setFont(font)
-        self.EDIT_ANSWER.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        self.EDIT_ANSWER.setObjectName("EDIT_ANSWER")
-        self.verticalLayout_2.addWidget(self.EDIT_ANSWER)
-        self.verticalLayout_2.setStretch(0, 3)
-        self.verticalLayout_2.setStretch(1, 7)
-        self.horizontalLayout_2.addLayout(self.verticalLayout_2)
-        self.horizontalLayout_2.setStretch(0, 2)
-        self.horizontalLayout_2.setStretch(1, 8)
-        self.gridLayout.addLayout(self.horizontalLayout_2, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.LIST_THEME, 0, 0, 1, 1)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "OpenAI"))
-        self.label.setText(_translate("MainWindow", "API-KEY"))
-        self.EDIT_ANSWER.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8.25pt;\"><br /></p></body></html>"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Tech"))
